@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hDn3Jc6hCEMJxJM2PNEGUDPQxbRRuqyg2xYmBSVcxxMT1yuLk3moI5fCSsKAFolsUTdqSHRkd9XO6Q8xn1M/LA==",
+  "dgSpecHash": "BGQFOUri125Jb/S0OkA4rvLFe3qKmNmgo5r/M5YVttBXLtXzTkY6daS1sMynse7Ri/Np+Gx8PRBH6ied4BK/YQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mecer\\Desktop\\International project\\Application\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\Mecer\\Desktop\\International project\\App2.0\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mecer\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Mecer\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

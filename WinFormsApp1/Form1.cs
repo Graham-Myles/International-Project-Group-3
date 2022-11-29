@@ -25,7 +25,7 @@ namespace WinFormsApp1
                 DataTable dtable = new DataTable();
                 sda.Fill(dtable);
 
-                if (dtable.Rows.Count > 0)
+                if (dtable.Rows[0][0].ToString() == "1")
                 {
                    // valid = true;
                     FrmMain m1 = new FrmMain();

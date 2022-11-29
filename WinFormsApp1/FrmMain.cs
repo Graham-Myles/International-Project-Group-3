@@ -55,7 +55,7 @@ namespace WinFormsApp1
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dataGridView2.DataSource = dt;
+            dataGridView1.DataSource = dt;
             cmd.ExecuteNonQuery();
             con.Close();
         }
@@ -69,43 +69,60 @@ namespace WinFormsApp1
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             da.Fill(dt);
-            dataGridView2.DataSource = dt;
+            dataGridView1.DataSource = dt;
             cmd.ExecuteNonQuery();
             con.Close();
         }
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
-            try
+            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True;MultipleActiveResultSets=true"))
             {
-                con.Open();
-                SqlCommand cmd_Min_Hrte = new SqlCommand("select MIN(HeartRate) AS LowestHeartrate from tblEmpRecord", con);
-                SqlDataReader rd1 = cmd_Min_Hrte.ExecuteReader();
+                try
+                {
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("select * from [Highest Heartrate]", con);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView2.DataSource = dt;
+                    cmd.ExecuteNonQuery();
+                    con.Close();
 
-                SqlCommand cmd_high_Hrte = new SqlCommand("select MAX(HeartRate) AS HighestHeartRate from tblEmpRecord", con);
-                SqlDataReader rd2 = cmd_high_Hrte.ExecuteReader();
+                    con.Open();
+                    SqlCommand cmd1 = new SqlCommand("select * from [Lowest Heartrate]", con);
+                    SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
+                    DataTable dt1 = new DataTable();
+                    da1.Fill(dt1);
+                    dataGridView2.DataSource = dt1;
+                    cmd1.ExecuteNonQuery();
+                    con.Close();
 
-                SqlCommand cmd_Min_STP = new SqlCommand("select MIN(Steps) AS LeastSteps from tblEmpRecord", con);
-                SqlDataReader rd3 = cmd_Min_STP.ExecuteReader();
+                    con.Open();
+                    SqlCommand cmd2 = new SqlCommand("select * from [Most Steps]", con);
+                    SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
+                    DataTable dt2 = new DataTable();
+                    da2.Fill(dt2);
+                    dataGridView2.DataSource = dt2;
+                    cmd2.ExecuteNonQuery();
+                    con.Close();
 
-                SqlCommand cmd_high_STP = new SqlCommand("select MAX(Steps) AS MostSteps from tblEmpRecord", con);
-                SqlDataReader rd4 = cmd_high_STP.ExecuteReader();
+                    con.Open();
+                    SqlCommand cmd3 = new SqlCommand("select * from [Least Steps]", con);
+                    SqlDataAdapter da3 = new SqlDataAdapter(cmd3);
+                    DataTable dt3 = new DataTable();
+                    da3.Fill(dt3);
+                    dataGridView2.DataSource = dt3;
+                    cmd3.ExecuteNonQuery();
+                    con.Close();
 
-                
-                txtLowHrte.Text = rd1[0].ToString();
-                txtHighHrte.Text = rd1[0].ToString();
-                txtLeastST.Text = rd3[0].ToString();
-                txtMostST.Text = rd3[0].ToString();
-                    
-                
-
-                con.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+               
             
 
         }
