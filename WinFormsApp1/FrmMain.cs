@@ -20,7 +20,7 @@ namespace WinFormsApp1
 
         private void btnSearch_Click(object sender, EventArgs e)
         { //search tblEmployeeRecord
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblEmpRecord where employee_id =@id",con);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtEmpID.Text));
@@ -35,7 +35,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         { //all tblEmployeeRecord
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblEmpRecord", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -48,7 +48,7 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         { //specific employee
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblUser where emp_id=@id", con);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtEmpID.Text));
@@ -63,7 +63,7 @@ namespace WinFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             //all employee
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblUser", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -76,7 +76,7 @@ namespace WinFormsApp1
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True;MultipleActiveResultSets=true"))
+            using (SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True"))
             {
                 try
                 {

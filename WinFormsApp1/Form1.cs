@@ -16,16 +16,16 @@ namespace WinFormsApp1
            // bool valid = false;
             string username = txtUserName.Text;
             string password = txtPassword.Text;
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             try
             {
                
                 con.Open();
-                SqlDataAdapter sda = new SqlDataAdapter("select * from tblAdmin where UserName = ' " + txtUserName.Text + " ' AND password = '" + txtPassword.Text + "' ", con);
+                SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM tblAdmin WHERE UserName = '" + txtUserName.Text + "' AND password = '" + txtPassword.Text + "' ", con);
                 DataTable dtable = new DataTable();
                 sda.Fill(dtable);
 
-                if (dtable.Rows[0][0].ToString() == "1")
+                if (dtable.Rows.Count == 1)
                 {
                    // valid = true;
                     FrmMain m1 = new FrmMain();
