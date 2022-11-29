@@ -20,7 +20,7 @@ namespace WinFormsApp1
 
         private void btnSearch_Click(object sender, EventArgs e)
         { //search tblEmployeeRecord
-            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblEmpRecord where employee_id =@id",con);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtEmpID.Text));
@@ -35,7 +35,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         { //all tblEmployeeRecord
-            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblEmpRecord", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -48,7 +48,7 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         { //specific employee
-            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblUser where emp_id=@id", con);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtEmpID.Text));
@@ -63,7 +63,7 @@ namespace WinFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             //all employee
-            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblUser", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -76,44 +76,17 @@ namespace WinFormsApp1
 
         private void btnStats_Click(object sender, EventArgs e)
         {
-            using (SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True"))
             {
                 try
                 {
                     con.Open();
-                    SqlCommand cmd = new SqlCommand("select * from [Highest Heartrate]", con);
+                    SqlCommand cmd = new SqlCommand("select * from [Highest Heartrate],[Lowest Heartrate],[Most Steps],[Least Steps]", con);
                     SqlDataAdapter da = new SqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
                     da.Fill(dt);
                     dataGridView2.DataSource = dt;
                     cmd.ExecuteNonQuery();
-                    con.Close();
-
-                    con.Open();
-                    SqlCommand cmd1 = new SqlCommand("select * from [Lowest Heartrate]", con);
-                    SqlDataAdapter da1 = new SqlDataAdapter(cmd1);
-                    DataTable dt1 = new DataTable();
-                    da1.Fill(dt1);
-                    dataGridView2.DataSource = dt1;
-                    cmd1.ExecuteNonQuery();
-                    con.Close();
-
-                    con.Open();
-                    SqlCommand cmd2 = new SqlCommand("select * from [Most Steps]", con);
-                    SqlDataAdapter da2 = new SqlDataAdapter(cmd2);
-                    DataTable dt2 = new DataTable();
-                    da2.Fill(dt2);
-                    dataGridView2.DataSource = dt2;
-                    cmd2.ExecuteNonQuery();
-                    con.Close();
-
-                    con.Open();
-                    SqlCommand cmd3 = new SqlCommand("select * from [Least Steps]", con);
-                    SqlDataAdapter da3 = new SqlDataAdapter(cmd3);
-                    DataTable dt3 = new DataTable();
-                    da3.Fill(dt3);
-                    dataGridView2.DataSource = dt3;
-                    cmd3.ExecuteNonQuery();
                     con.Close();
 
                 }
@@ -125,6 +98,36 @@ namespace WinFormsApp1
                
             
 
+        }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Reader.Read();
+                MessageBox.Show("Read success");
+                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True"))
+                {
+              
+                        con.Open();
+                        SqlCommand cmd = new SqlCommand("Select * from tblEmpRecord", con);
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        DataTable dt = new DataTable();
+                        da.Fill(dt);
+                        dataGridView2.DataSource = dt;
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("read uncessful");
+            }
         }
     }
     }

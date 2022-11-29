@@ -16,7 +16,7 @@ namespace WinFormsApp1
            // bool valid = false;
             string username = txtUserName.Text;
             string password = txtPassword.Text;
-            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
             try
             {
                

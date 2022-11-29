@@ -13,25 +13,26 @@ namespace WinFormsApp1
     {
         public static void Read()
         {
-            /*string line;
+            string line;
 
-            using (SqlConnection con = new SqlConnection(@"Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True"))
+            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True"))
             {
                 con.Open();
-                using (StreamReader file = new StreamReader(@"Desktop/WorkSmartDataCapture.txt"))
+                using (StreamReader file = new StreamReader(@"Downloads/WorkSmartDataCapture.txt"))
                 {
                     while ((line = file.ReadLine()) != null)
                     {
                         string[] fields = line.Split(',');
 
-                        SqlCommand cmd = new SqlCommand("INSERT INTO appDB(Gas_Status, Steps, Heartrate) VALUES (@Gas_Status, @Steps, @HeartRate)", con);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO AppDB(Gas_Status, Steps, Heartrate) VALUES (@Gas_Status, @Steps, @HeartRate)", con);
                         cmd.Parameters.AddWithValue("@Gas_Status", fields[0].ToString());
                         cmd.Parameters.AddWithValue("@Steps", fields[1].ToString());
                         cmd.Parameters.AddWithValue("@Heartrate", fields[2].ToString());
                         cmd.ExecuteNonQuery();
                     }
                 }
-            }*/
+            }
         }
+
     }
 }
