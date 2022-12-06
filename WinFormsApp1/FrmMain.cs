@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace WinFormsApp1
 {
@@ -20,9 +14,9 @@ namespace WinFormsApp1
 
         private void btnSearch_Click(object sender, EventArgs e)
         { //search tblEmployeeRecord
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
-            SqlCommand cmd = new SqlCommand("select * from tblEmpRecord where employee_id =@id",con);
+            SqlCommand cmd = new SqlCommand("select * from tblEmpRecord where employee_id =@id", con);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtEmpID.Text));
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -35,7 +29,7 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         { //all tblEmployeeRecord
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblEmpRecord", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -48,7 +42,7 @@ namespace WinFormsApp1
 
         private void button2_Click(object sender, EventArgs e)
         { //specific employee
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblUser where emp_id=@id", con);
             cmd.Parameters.AddWithValue("@id", int.Parse(txtEmpID.Text));
@@ -63,7 +57,7 @@ namespace WinFormsApp1
         private void button3_Click(object sender, EventArgs e)
         {
             //all employee
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             con.Open();
             SqlCommand cmd = new SqlCommand("select * from tblUser", con);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
@@ -72,32 +66,6 @@ namespace WinFormsApp1
             dataGridView1.DataSource = dt;
             cmd.ExecuteNonQuery();
             con.Close();
-        }
-
-        private void btnStats_Click(object sender, EventArgs e)
-        {
-            using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True"))
-            {
-                try
-                {
-                    con.Open();
-                    SqlCommand cmd = new SqlCommand("select * from [Highest Heartrate],[Lowest Heartrate],[Most Steps],[Least Steps]", con);
-                    SqlDataAdapter da = new SqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-                    dataGridView2.DataSource = dt;
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-               
-            
-
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
@@ -111,17 +79,17 @@ namespace WinFormsApp1
             {
                 Reader.Read();
                 MessageBox.Show("Read success");
-                using (SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True"))
+                using (SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True"))
                 {
-              
-                        con.Open();
-                        SqlCommand cmd = new SqlCommand("Select * from tblEmpRecord", con);
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
-                        dataGridView2.DataSource = dt;
-                        cmd.ExecuteNonQuery();
-                        con.Close();
+
+                    con.Open();
+                    SqlCommand cmd = new SqlCommand("Select * from tblEmpRecord", con);
+                    SqlDataAdapter da = new SqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+                    dataGridView1.DataSource = dt;
+                    cmd.ExecuteNonQuery();
+                    con.Close();
                 }
             }
             catch
@@ -129,6 +97,60 @@ namespace WinFormsApp1
                 MessageBox.Show("read uncessful");
             }
         }
+
+        private void btnStats_Click_1(object sender, EventArgs e)
+        {
+            
+            try
+            {
+                List<String[]> fileContent = new List<string[]>();
+
+                using (FileStream reader = File.OpenRead(@"C:\Users\graam\Desktop\StreamCapture\CoolTerm Capture 2022-12-02 14-43-51.txt")) // mind the encoding - UTF8
+                using (TextFieldParser parser = new TextFieldParser(reader))
+                {
+                    parser.Delimiters = new[] { "," };
+                    while (!parser.EndOfData)
+                    {
+                        string[] line = parser.ReadFields();
+                        fileContent.Add(line);
+
+                        DataTable dt = new DataTable();
+                        // add columns to datatable
+                        dt.Columns.Add("Gas detection", typeof(int));
+                        dt.Columns.Add("Steps", typeof(int));
+                        dt.Columns.Add("Heart rate", typeof(int));
+                        dataGridView1.DataSource = dt;
+
+                        DataRow dr = dt.NewRow();
+
+                        for (int i = 0; i < dt.Columns.Count; i++)
+                        {
+                            dr[i] = line[i];
+                        }
+                        dt.Rows.Add(dr);
+
+                        //foreach (var array in line)
+                        //{
+                        //    DataRow dr = dt.NewRow();
+                        //    dr["Gas detection"] = array.
+                        //    dt.Rows.Add(array);
+                        //}
+                        //for (int i = 0; i < line.Length; i++)
+                        //{
+                        //    for (int j = 0; j <= 3; j++)
+                        //    {
+                        //        dt.Rows.Add(line);
+                        //    }
+                        //}
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
     }
-    }
+}
 

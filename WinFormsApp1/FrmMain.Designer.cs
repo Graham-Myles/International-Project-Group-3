@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnStats = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -41,16 +38,16 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtEmpID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnStats = new System.Windows.Forms.Button();
+            this.btnGetData = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox2);
+            this.groupBox1.Controls.Add(this.btnGetData);
+            this.groupBox1.Controls.Add(this.btnStats);
             this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
@@ -66,37 +63,6 @@
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Operations";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.btnStats);
-            this.groupBox2.Controls.Add(this.dataGridView2);
-            this.groupBox2.Location = new System.Drawing.Point(640, 28);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(680, 405);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Stats";
-            // 
-            // btnStats
-            // 
-            this.btnStats.Location = new System.Drawing.Point(37, 25);
-            this.btnStats.Name = "btnStats";
-            this.btnStats.Size = new System.Drawing.Size(154, 23);
-            this.btnStats.TabIndex = 16;
-            this.btnStats.Text = "Show Stats";
-            this.btnStats.UseVisualStyleBackColor = true;
-            this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(21, 91);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowTemplate.Height = 25;
-            this.dataGridView2.Size = new System.Drawing.Size(610, 278);
-            this.dataGridView2.TabIndex = 8;
             // 
             // button3
             // 
@@ -152,7 +118,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(16, 119);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(618, 278);
+            this.dataGridView1.Size = new System.Drawing.Size(1310, 311);
             this.dataGridView1.TabIndex = 7;
             // 
             // btnSearch
@@ -181,15 +147,24 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Employee ID";
             // 
-            // button4
+            // btnStats
             // 
-            this.button4.Location = new System.Drawing.Point(206, 25);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(154, 23);
-            this.button4.TabIndex = 17;
-            this.button4.Text = "Get data";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnStats.Location = new System.Drawing.Point(678, 64);
+            this.btnStats.Name = "btnStats";
+            this.btnStats.Size = new System.Drawing.Size(75, 23);
+            this.btnStats.TabIndex = 16;
+            this.btnStats.Text = "Stats";
+            this.btnStats.UseVisualStyleBackColor = true;
+            this.btnStats.Click += new System.EventHandler(this.btnStats_Click_1);
+            // 
+            // btnGetData
+            // 
+            this.btnGetData.Location = new System.Drawing.Point(795, 64);
+            this.btnGetData.Name = "btnGetData";
+            this.btnGetData.Size = new System.Drawing.Size(75, 23);
+            this.btnGetData.TabIndex = 17;
+            this.btnGetData.Text = "Get Data";
+            this.btnGetData.UseVisualStyleBackColor = true;
             // 
             // FrmMain
             // 
@@ -202,8 +177,6 @@
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
@@ -214,7 +187,6 @@
         private GroupBox groupBox1;
         private Label label3;
         private Label label2;
-        private DataGridView dataGridView2;
         private DataGridView dataGridView1;
         private Button btnSearch;
         private TextBox txtEmpID;
@@ -222,8 +194,7 @@
         private Button button1;
         private Button button2;
         private Button button3;
-        private GroupBox groupBox2;
+        private Button btnGetData;
         private Button btnStats;
-        private Button button4;
     }
 }

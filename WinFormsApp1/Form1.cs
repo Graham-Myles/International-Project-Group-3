@@ -1,6 +1,5 @@
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq.Expressions;
 
 namespace WinFormsApp1
 {
@@ -13,13 +12,13 @@ namespace WinFormsApp1
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-           // bool valid = false;
+            // bool valid = false;
             string username = txtUserName.Text;
             string password = txtPassword.Text;
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-C2RP5S6;Initial Catalog=test;Integrated Security=True");
+            SqlConnection con = new SqlConnection("Data Source=GRAHAMPC;Initial Catalog=appDB;Integrated Security=True");
             try
             {
-               
+
                 con.Open();
                 SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM tblAdmin WHERE UserName = '" + txtUserName.Text + "' AND password = '" + txtPassword.Text + "' ", con);
                 DataTable dtable = new DataTable();
@@ -27,7 +26,7 @@ namespace WinFormsApp1
 
                 if (dtable.Rows.Count == 1)
                 {
-                   // valid = true;
+                    // valid = true;
                     FrmMain m1 = new FrmMain();
                     m1.Show();
                     this.Hide();
@@ -48,8 +47,8 @@ namespace WinFormsApp1
             {
                 con.Close();
             }
-            
-}
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -58,4 +57,4 @@ namespace WinFormsApp1
             this.Hide();
         }
     }
-    }
+}
