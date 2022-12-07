@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic.FileIO;
-using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 
 namespace WinFormsApp1
@@ -100,50 +98,49 @@ namespace WinFormsApp1
 
         private void btnStats_Click_1(object sender, EventArgs e)
         {
-            
+
             try
             {
-                List<String[]> fileContent = new List<string[]>();
+                DataTable dt = new DataTable();
+                // add columns to datatable
+                dt.Columns.Add("Gas detection", typeof(string));
+                dt.Columns.Add("Steps", typeof(string));
+                dt.Columns.Add("Heart rate", typeof(string));
+                dataGridView1.DataSource = dt;
 
-                using (FileStream reader = File.OpenRead(@"C:\Users\graam\Desktop\StreamCapture\CoolTerm Capture 2022-12-02 14-43-51.txt")) // mind the encoding - UTF8
-                using (TextFieldParser parser = new TextFieldParser(reader))
+                string text = File.ReadAllText(@"C:\Users\graam\Desktop\StreamCapture\CoolTerm Capture 2022-12-02 14-43-51.txt");
+                string[] splitter = text.Split(',');
+                
+                int heartrate;
+                int avg = 0;
+
+                for (int i = 0; i < splitter.Length-1; i++) //loop for inputting values into datatable and fact checking them
                 {
-                    parser.Delimiters = new[] { "," };
-                    while (!parser.EndOfData)
+                    if (i % 3 == 0)
                     {
-                        string[] line = parser.ReadFields();
-                        fileContent.Add(line);
+                        dt.Rows.Add(splitter[i], splitter[i+1], splitter[i+2]); //adds data to datatable
 
-                        DataTable dt = new DataTable();
-                        // add columns to datatable
-                        dt.Columns.Add("Gas detection", typeof(int));
-                        dt.Columns.Add("Steps", typeof(int));
-                        dt.Columns.Add("Heart rate", typeof(int));
-                        dataGridView1.DataSource = dt;
-
-                        DataRow dr = dt.NewRow();
-
-                        for (int i = 0; i < dt.Columns.Count; i++)
-                        {
-                            dr[i] = line[i];
-                        }
-                        dt.Rows.Add(dr);
-
-                        //foreach (var array in line)
-                        //{
-                        //    DataRow dr = dt.NewRow();
-                        //    dr["Gas detection"] = array.
-                        //    dt.Rows.Add(array);
-                        //}
-                        //for (int i = 0; i < line.Length; i++)
-                        //{
-                        //    for (int j = 0; j <= 3; j++)
-                        //    {
-                        //        dt.Rows.Add(line);
-                        //    }
-                        //}
                     }
+
                 }
+               // heartrate = Convert.ToInt32(dt.Compute("AVR(Heart rate)", ""));
+                //for (int j = 0; j < dt.Rows.Count; j++)
+                //{
+                    //heartrate = Convert.ToInt32(dt.Rows[j]["Heart rate"]);
+                    
+                    //MessageBox.Show(heartrate + "");
+                    //if (avg>heartInt)
+                    //{
+                    //    MessageBox.Show(avg + "");
+                    //}
+                    //else if (avg<heartInt)
+                    //{
+                    //    MessageBox.Show(avg + "");
+                    //}
+               //}
+
+
+
 
             }
             catch (Exception ex)

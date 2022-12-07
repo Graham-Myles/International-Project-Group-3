@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\graam\\Source\\Repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj": {}
+    "C:\\Users\\graam\\source\\repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\graam\\Source\\Repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj": {
+    "C:\\Users\\graam\\source\\repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\graam\\Source\\Repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj",
+        "projectUniqueName": "C:\\Users\\graam\\source\\repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj",
         "projectName": "WinFormsApp1",
-        "projectPath": "C:\\Users\\graam\\Source\\Repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj",
+        "projectPath": "C:\\Users\\graam\\source\\repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj",
         "packagesPath": "C:\\Users\\graam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\graam\\Source\\Repos\\International-Project-Group-3\\WinFormsApp1\\obj\\",
+        "outputPath": "C:\\Users\\graam\\source\\repos\\International-Project-Group-3\\WinFormsApp1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

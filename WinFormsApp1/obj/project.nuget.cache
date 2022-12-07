@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "LANOyJvlXP9lxJJ+34ldkWM/rSsC66mPXDLofy7/Caz70NuYuf/4jK26m9Qx57SUptD42uppZxVXuioWpEgdkw==",
+  "dgSpecHash": "7zQrN35Ev6wGitkAHJ+nUxKubp4tWRDfnDEsBWdy31JMME2n5/2d6BrPR+usiKPTXxYqDGSJwq8lQ+wYTNJKUQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\graam\\Source\\Repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj",
+  "projectFilePath": "C:\\Users\\graam\\source\\repos\\International-Project-Group-3\\WinFormsApp1\\WinFormsApp1.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\graam\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\graam\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
