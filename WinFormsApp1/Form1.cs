@@ -27,7 +27,7 @@ namespace WinFormsApp1
                 if (dtable.Rows.Count == 1)
                 {
                     // valid = true;
-                    FrmMain m1 = new FrmMain();
+                    WorkSmart m1 = new WorkSmart();
                     m1.Show();
                     this.Hide();
                 }
@@ -48,13 +48,6 @@ namespace WinFormsApp1
                 con.Close();
             }
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            FrmMain m1 = new FrmMain();
-            m1.Show();
-            this.Hide();
         }
     }
 }

@@ -32,7 +32,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtUserName = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
@@ -65,32 +64,22 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnLogin);
             this.groupBox1.Controls.Add(this.txtUserName);
             this.groupBox1.Controls.Add(this.txtPassword);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Location = new System.Drawing.Point(152, 49);
+            this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(306, 178);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Supervisor Login";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(147, 138);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "next frm";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(41, 138);
+            this.btnLogin.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnLogin.Location = new System.Drawing.Point(182, 134);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 23);
             this.btnLogin.TabIndex = 3;
@@ -109,11 +98,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(575, 351);
+            this.ClientSize = new System.Drawing.Size(328, 204);
             this.Controls.Add(this.groupBox1);
+            this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "Form1";
-            this.Text = "Supervisor Login";
+            this.Text = "Login";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -128,6 +119,5 @@
         private GroupBox groupBox1;
         private Button btnLogin;
         private TextBox txtUserName;
-        private Button button1;
     }
 }
