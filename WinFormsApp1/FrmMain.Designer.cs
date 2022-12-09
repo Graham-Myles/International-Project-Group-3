@@ -57,6 +57,7 @@
             this.groupBox1.Controls.Add(this.panel2);
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Controls.Add(this.dataGridView1);
+            this.groupBox1.ForeColor = System.Drawing.SystemColors.WindowText;
             this.groupBox1.Location = new System.Drawing.Point(28, 23);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(718, 543);
@@ -93,9 +94,9 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(14, 6);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(104, 15);
+            this.label6.Size = new System.Drawing.Size(99, 15);
             this.label6.TabIndex = 23;
-            this.label6.Text = "Employee Records";
+            this.label6.Text = "Employee Record";
             // 
             // btnSearch
             // 
@@ -185,7 +186,7 @@
             // 
             this.txtEmpID.Location = new System.Drawing.Point(12, 28);
             this.txtEmpID.Name = "txtEmpID";
-            this.txtEmpID.Size = new System.Drawing.Size(171, 23);
+            this.txtEmpID.Size = new System.Drawing.Size(154, 23);
             this.txtEmpID.TabIndex = 5;
             // 
             // label4
